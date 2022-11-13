@@ -34,7 +34,7 @@ struct Manacher{
         int l=1,r=1;
         lp.pb(0);
         for (int i=1;i<=n;i++){
-            int v=max(0,min((lp[l+r-i]),r-i));
+            int v=max(0,min((l+r-i<lp.size() ? lp[l+r-i] : 1000000000),r-i));
             while (s[i-v]==s[i+v]) v++;
             if (i+v>r){
                 l=i-v,r=i+v;
@@ -51,4 +51,5 @@ struct Manacher{
 int main(){
     string s="racecar";
     Manacher p(s);
+    print(p.is_palindrome(1,5));
 }
